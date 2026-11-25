@@ -30,6 +30,7 @@ export 'linux_elevation.dart';
 export 'log_payload.dart';
 export 'lock.dart';
 export 'mixin.dart';
+export 'motion.dart';
 export 'network.dart';
 export 'network_error.dart';
 export 'num.dart';
