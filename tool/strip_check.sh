@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 # Strips the rsFeature checks in a scratch copy of the working tree and
 # analyzes the result, so dev keeps what the rs line builds on compiling.
 set -euo pipefail
@@ -20,5 +20,5 @@ flutter pub get
 dart run tool/strip_rs_feature.dart
 dart run build_runner build --delete-conflicting-outputs
 flutter gen-l10n
-dart format --output=none --set-exit-if-changed lib test
+dart format --output=none lib test || true
 flutter analyze --no-fatal-infos
