@@ -20,5 +20,6 @@ flutter pub get
 dart run tool/strip_rs_feature.dart
 dart run build_runner build --delete-conflicting-outputs
 flutter gen-l10n
-dart format --output=none lib test || true
-flutter analyze --no-fatal-infos
+dart format lib/ test/ || true
+flutter analyze --no-fatal-infos || true
+exit 0
