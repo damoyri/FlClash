@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/models/models.dart';
@@ -54,7 +54,12 @@ class _Figure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(
+    return AnimatedSwitcher(
+      duration: Motion.medium2,
+      transitionBuilder: (child, animation) =>
+          FadeTransition(opacity: animation, child: child),
+      child: Text.rich(
+        key: ValueKey('${show.value}|$unit'),
       TextSpan(
         children: [
           TextSpan(
@@ -69,6 +74,7 @@ class _Figure extends StatelessWidget {
       ),
       maxLines: 1,
       overflow: TextOverflow.clip,
+    ),
     );
   }
 }
@@ -327,3 +333,4 @@ class _SpeedTile extends StatelessWidget {
     );
   }
 }
+

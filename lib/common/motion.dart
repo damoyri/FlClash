@@ -34,3 +34,9 @@ Duration motionDuration(BuildContext context, Duration duration) =>
 
 Curve motionCurve(BuildContext context, Curve curve) =>
     isMotionDisabled(context) ? Curves.linear : curve;
+abstract final class Motion {
+  static const medium2 = Md3Durations.medium2;
+  static const medium4 = Md3Durations.medium4;
+  static const emphasizedDecelerate = Md3Curves.emphasizedDecelerate;
+  static const emphasizedAccelerate = Md3Curves.emphasizedAccelerate;
+}
