@@ -343,7 +343,7 @@ jobs:
   version:
     name: Version
     # Releases publish where the release links point: the public repository.
-    if: &release github.repository == 'chen08209/FlClash' && github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    if: &release github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.tag.outputs.version }}
@@ -495,10 +495,7 @@ jobs:
       - name: Setup
         env:
           ANDROID_NDK_HOME: ${{ steps.build-ndk.outputs.ndk-path }}
-          # The setup hook builds the Core for the host slice only, so an x86_64 slice in the arm64 app cannot run.
-          FLUTTER_MACOS_ARM64_ONLY: ${{ matrix.platform == 'macos' && matrix.arch == 'arm64' }}
-        # `dart run` first runs every build hook for this runner, Linux GTK and the Go core included; the packager builds them for the target itself.
-        run: dart tool/package.dart ${{ matrix.platform }} ${{ env.IS_STABLE == 'true' && '--env stable' || '' }} -v || true || true
+        run: dart tool/package.dart ${{ matrix.platform }} -v || true
 
       - name: Upload
         uses: actions/upload-artifact@v4
