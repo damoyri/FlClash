@@ -62,9 +62,8 @@ jobs:
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: FlClash-MD3-Android-APK
+          name: FlClash-MD3-arm64
           path: |
-            dist/*.apk
-            dist/*
-            build/app/outputs/flutter-apk/*.apk
-          if-no-files-found: warn
+            dist/*arm64*.apk
+            build/app/outputs/flutter-apk/*arm64*.apk
+          if-no-files-found: error
